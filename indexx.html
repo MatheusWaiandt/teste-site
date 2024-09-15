@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Mind</title>
+
+    <link rel="stylesheet" href="CSS/index.css">
+</head>
+<body>
+    <header id="start">
+        <div class="container-start">
+                <div class="nomeSite">
+                    <img class="logo-img" src="ASSETS/logo.png" alt="" height="170px" width="170">
+                    <nav class="navigation">
+                        <a href="#start">HOME</a>
+                        <a href="#services-container">PLANOS</a>
+                        <a href="empresa.html">CONHEÇA A EMPRESA</a>
+
+                        <div class="dropdown">
+                            <button class="dropbtn">CONTATO</button>
+                            <div class="dropdown-content">
+                                <a href="https://www.instagram.com/kauanfaller_projects/">INSTAGRAM</a>
+                                <a href="#">FACEBOOK</a>
+                                <a href="#">TELEGRAM</a>
+                            </div>
+                        </div>
+
+                    </div>
+                    <nav class="login-acesso">
+                        <a href="login.html">ENTRAR</a>
+                        <a class="cadastro" href="cadastro.html">CADASTRAR-SE</a>
+                    </nav>
+
+        </div>
+    </header>
+
+    <div class="image">
+        <img src="ASSETS/psicologo.png" alt="">
+    </div>
+    <div class="theme">
+        <h2>FULL MIND<br> TRASNSFORME SUA VIDA COM PSICOLOGIA DE EXCELÊNCIA </h2>
+       <p> NA FULL MIND, NOSSO COMPROMISSO É PROPORCIONAR UM CUIDADO PSICOLÓGICO DE ALTA QUALIDADE,
+        AJUDANDO VOCÊ A ALCANÇAR O EQUILIBRIO E A REALIZAÇÃO PESSOAL QUE MERECE!
+       </p>
+    </div>
+    
+    <div class="acesso">
+        <a href="#services-container">VER PLANOS</a>
+    </div>
+    
+    <section>
+        <div class="container">
+            <div class="sections">
+                <h1>NOSSOS PLANOS</h1>
+            </div>
+        </div>
+        <div id="services-container">
+            <section class="service-section">
+                <h2 class="service-title">PLANO FREE</h2>
+                <h2 class="service-plan">R$ 0,00</h2>
+                <p class="nameDescricao">Suporte 24h com o ChatBot</p>
+                <p class="service-description"><strong>Descrição:</strong> Experimente o poder da automação e suporte contínuo com nosso Plano Free! Com este plano, oferecemos a todos os nossos usuários acesso gratuito ao nosso ChatBot, disponível 24 horas por dia. Perfeito para quem busca respostas rápidas, suporte instantâneo e uma experiência interativa contínua, sem qualquer custo.</p>
+                <p class="service-description"><strong>Benefícios do Plano Free:</strong>Tenha suporte a qualquer hora do dia ou da noite. O nosso ChatBot está sempre pronto para ajudar, garantindo que suas dúvidas sejam resolvidas sem demora.</p>
+                <p class="service-description"><strong>Interação Instantânea:</strong> Obtenha respostas em tempo real sem ter que aguardar na fila de espera. Nosso ChatBot fornece respostas rápidas e precisas para suas perguntas.</p>   
+                <a class="access-button" href="cadastro.html">ACESSAR CHATBOT</a>
+            </section>
+
+            <section class="service-section">
+                <h2 class="service-title">PLANO BÁSICO</h2>
+                <h2 class="service-plan">R$ 59,90</h2>
+                <p class="nameDescricao">Suporte com Psicólogo via WhatsApp</p>
+                <p class="service-description"><strong>Descrição:</strong>Este plano oferece a você acesso ao acompanhamento psicológico por mensagem, permitindo consultas programadas com profissionais qualificados. Ideal para quem busca um atendimento personalizado, conveniente e discreto, diretamente no seu dispositivo móvel.</p>
+                <p class="service-description"><strong>Destaques do Plano Básico:</strong>Tenha sessões de suporte emocional e psicológico com um profissional qualificado via WhatsApp.</p>
+                <p class="service-description"><strong>Conveniência:</strong>Agende suas consultas de acordo com a sua disponibilidade, garantindo que você tenha o suporte necessário no momento que mais precisa.</p>
+                <p class="service-description"><strong>Privacidade e Conforto:</strong> Realize suas sessões no conforto de sua casa ou em qualquer lugar, com total privacidade e segurança.</p>
+                <button id="whatsappButton">SOLICITAR SERVIÇO</button>
+
+            </section>
+            <section class="service-section">
+                <h2 class="service-title">PLANO FULL</h2>
+                <h2 class="service-plan">R$ 110,00</h2>
+                <p class="nameDescricao">Consultas por Videochamadas & mensagens</p>
+                <p class="service-description"><strong>Descrição:</strong>Experimente o atendimento mais completo e personalizado com nosso Plano Full. Este plano oferece a liberdade e flexibilidade de realizar consultas por videochamadas ou por mensagem com profissionais qualificados, garantindo um acompanhamento contínuo e de alta qualidade. Ideal para quem busca um atendimento psicológico profundo e regular, com a conveniência das tecnologias modernas.</p>
+                <p class="service-description"><strong>Destaques do Plano Full:</strong> Tenha acesso a sessões de suporte emocional e psicológico por videochamada, proporcionando uma experiência de consulta mais pessoal e interativa.</p>
+                <p class="service-description"><strong>Quantidade de Consultas:</strong>Desfrute de até 3 consultas mensais, garantindo um acompanhamento contínuo e eficaz.</p>
+                <p class="service-description"><strong>Confidencialidade e Segurança:</strong> As consultas são realizadas em plataformas seguras, garantindo total confidencialidade e privacidade para você.</p>
+                <button id="whatsappButton">SOLICITAR SERVIÇO</button>
+
+            </section>
+        </div>
+    </section>
+<script>
+    document.getElementById('whatsappButton').addEventListener('click', function() {
+    const phoneNumber = '5527999657236';  
+    const message = 'Olá, gostaria de agendar um horário!';
+    const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+        // Cria um link temporário
+        const link = document.createElement('a');
+    link.href = whatsappURL;
+    link.target = '_blank';
+
+    // Adiciona o link ao body, clica nele, e depois o remove
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+});
+</script>
+   
+</body>
+</html>

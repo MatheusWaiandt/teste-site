@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChatBot</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+    :root {
+      --dark-bg: #121212; /* Preto para o fundo do contêiner */
+      --light-text: #e0e0e0; /* Cinza claro para o texto */
+      --dark-gray: #333333; /* Cinza escuro para a caixa de perguntas */
+      --light-gray: #4f4f4f; /* Cinza médio para o fundo das respostas */
+      --button-bg: #555555; /* Cinza escuro para o fundo do botão */
+      --button-hover-bg: #777777; /* Cinza médio para o botão ao passar o mouse */
+    }
+
+    body {
+      background: var(--dark-bg);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      color: var(--light-text);
+      overflow: hidden;
+    }
+
+    .box-questions {
+      background: var(--dark-gray);
+      border-radius: 20px;
+      width: 90%;
+      max-width: 500px;
+      height: 80vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .header {
+      background: var(--light-gray);
+      color: var(--light-text);
+      padding: 15px;
+      text-align: center;
+      border-bottom: 1px solid var(--dark-bg);
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    #resposta {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      background: var(--dark-gray);
+    }
+
+    .footer {
+      padding: 15px;
+      display: flex;
+      background: var(--dark-gray);
+      border-top: 1px solid var(--dark-bg);
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    input[type="text"] {
+      flex: 1;
+      padding: 10px 15px;
+      background: var(--light-gray);
+      border: 1px solid var(--light-gray);
+      border-radius: 25px;
+      color: var(--light-text);
+      font-size: 1rem;
+      margin-right: 10px;
+      transition: transform 0.3s;
+    }
+
+    input[type="text"]:focus {
+      transform: scale(1.05);
+    }
+
+    button {
+      background: var(--button-bg);
+      border: none;
+      border-radius: 25px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      color: var(--light-text);
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    button:hover {
+      background: var(--button-hover-bg);
+      transform: scale(1.05);
+    }
+
+    .box-my-message {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .box-response-message {
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    .my-message, .response-message {
+      max-width: 70%;
+      padding: 15px;
+      border-radius: 15px;
+      font-size: 1rem;
+      position: relative;
+      line-height: 1.5;
+      animation: slideIn 0.5s ease-in-out;
+    }
+
+    .my-message {
+      background: var(--button-bg);
+      color: var(--light-text);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .response-message {
+      background: var(--light-gray);
+      color: var(--light-text);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="box-questions">
+    <div class="header">IA - Psicólogo online</div>
+    <div id="resposta"></div>
+    <div class="footer">
+      <form id="chat-form" style="display: flex; width: 100%;">
+        <input type="text" id="pergunta" placeholder="Digite sua pergunta..." required>
+        <button type="submit">Perguntar</button>
+      </form>
+    </div>
+  </div>
+  <script>
+    document.getElementById('chat-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const pergunta = document.getElementById('pergunta').value;
+      const respostaDiv = document.getElementById('resposta');
+
+      // Adicionar a pergunta ao histórico
+      const perguntaElemento = document.createElement('div');
+      perguntaElemento.className = 'box-my-message';
+      perguntaElemento.innerHTML = `<div class="my-message">Pergunta: ${pergunta}</div>`;
+      respostaDiv.appendChild(perguntaElemento);
+
+      // Enviar a pergunta para o servidor
+      const response = await fetch('/ask', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ pergunta })
+      });
+
+      // Adicionar a resposta ao histórico
+      const data = await response.json();
+      const respostaElemento = document.createElement('div');
+      respostaElemento.className = 'box-response-message';
+      respostaElemento.innerHTML = `<div class="response-message">Resposta: ${data.resposta}</div>`;
+      respostaDiv.appendChild(respostaElemento);
+
+      // Limpar o campo de input
+      document.getElementById('pergunta').value = '';
+    });
+  </script>
+</body>
+</html>

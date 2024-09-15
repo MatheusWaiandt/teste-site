@@ -1,0 +1,135 @@
+/* Reset basic styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: 'Arial', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+body {
+    background-color: #e7f1e8;
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 100px; /* Padding para garantir espaçamento em volta do conteúdo */
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.card {
+    width: 270px;
+    height: 520px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    margin: 0px; /* Adicionei margem para espaçamento entre cards */
+}
+
+.card-image img {
+    width: 100%;
+    height: 300px; /* Define uma altura fixa para as imagens */
+    object-fit: cover; /* Faz com que a imagem se ajuste à área sem distorcer */
+}
+
+.card-content {
+    padding: 20px;
+    text-align: center;
+}
+
+.card-content h2 {
+    margin-bottom: 10px;
+    font-size: 24px;
+    color: #333;
+}
+
+.card-content p {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.5;
+}
+
+.container-start {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #34324f;
+    height: 120px;
+    color: #f7feff;
+}
+
+.nomeSite {
+    font-size: 12px;
+    margin: 30px 0px 0px 100px;
+    color: #f7feff;
+}
+
+.navigation {
+    margin: -70px 0px 0px 1100px;
+    gap: 20px;
+    font-size: 15px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.navigation a {
+    color: #f7feff;
+    text-decoration: none;
+    padding: 0px 0px 0px 50px;
+    transition: color 0.3s;
+}
+
+.navigation a:hover {
+    color: #a4a6af;
+}
+
+/* Styling for each service section */
+.service-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    margin: 40px 10px; /* Aumentei a margem superior para posicionar mais abaixo */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 12px 4px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    max-width: 420px;
+    box-sizing: border-box;
+    text-align: center;
+    overflow: visible; /* Garante que o conteúdo seja visível */
+}
+
+/* Styling for the service image with zoom effect */
+.service-image {
+    max-width: 100%;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+    margin-bottom: 0px;
+}
+
+.service-image:hover {
+    transform: scale(1.05);
+}
+
+/* Styling for the title */
+.service-title {
+    font-size: 25px;
+    margin: 10px 0px;
+    color: #3c4d72;
+}
+
+/* Styling for the description */
+.service-description {
+    font-size: 16px;
+    margin-bottom: 25px;
+    color: #666;
+}
